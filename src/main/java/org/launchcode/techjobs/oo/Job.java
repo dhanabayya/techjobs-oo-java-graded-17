@@ -33,6 +33,7 @@ public class Job {
     @Override
     public String toString() {
         String empty = "Data not available";
+        String name = getName().isEmpty() ? empty : getName();
         String employerValue = employer.getValue().isEmpty() ? empty : employer.getValue();
         String locationValue = location.getValue().isEmpty() ? empty : location.getValue();
         String positionTypeValue = positionType.getValue().isEmpty() ? empty : positionType.getValue();

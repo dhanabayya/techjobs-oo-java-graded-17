@@ -33,6 +33,9 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertFalse(job1.equals(job2));
 
     }
 
@@ -48,22 +51,44 @@ public class JobTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals(true, job.toString().contains("ID: "));
-        assertEquals(true, job.toString().contains("Name: "));
-        assertEquals(true, job.toString().contains("Employer: "));
-        assertEquals(true, job.toString().contains("Location: "));
-        assertEquals(true, job.toString().contains("Position Type: "));
-        assertEquals(true, job.toString().contains("Core Competency: "));
-        assertEquals(true, job.toString().contains("" + job.getId()));
-        assertEquals(true, job.toString().contains(job.getName()));
-        assertEquals(true, job.toString().contains(job.getEmployer().getValue()));
-        assertEquals(true, job.toString().contains(job.getLocation().getValue()));
-        assertEquals(true, job.toString().contains(job.getPositionType().getValue()));
-        assertEquals(true, job.toString().contains(job.getCoreCompetency().getValue()));
+//        assertEquals(true, job.toString().contains("ID: "));
+//        assertEquals(true, job.toString().contains("Name: "));
+//        assertEquals(true, job.toString().contains("Employer: "));
+//        assertEquals(true, job.toString().contains("Location: "));
+//        assertEquals(true, job.toString().contains("Position Type: "));
+//        assertEquals(true, job.toString().contains("Core Competency: "));
+//        assertEquals(true, job.toString().contains("" + job.getId()));
+//        assertEquals(true, job.toString().contains(job.getName()));
+//        assertEquals(true, job.toString().contains(job.getEmployer().getValue()));
+//        assertEquals(true, job.toString().contains(job.getLocation().getValue()));
+//        assertEquals(true, job.toString().contains(job.getPositionType().getValue()));
+//        assertEquals(true, job.toString().contains(job.getCoreCompetency().getValue()));
+
+        String output=System.lineSeparator()+"ID: "+job.getId()+System.lineSeparator()+"Name: "+job.getName()+System.lineSeparator()+"Employer: "+job.getEmployer()+System.lineSeparator()+
+                "Location: "+job.getLocation()+System.lineSeparator()+"Position Type: "+job.getPositionType()+System.lineSeparator()+"Core Competency: "
+                +job.getCoreCompetency()+System.lineSeparator();
+        assertEquals(output,job.toString());
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
+        Job job = new Job("Product tester", new Employer(""), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//        assertEquals(true, job.toString().contains("ID: "));
+//        assertEquals(true, job.toString().contains("Name: "));
+//        assertEquals(true, job.toString().contains("Employer: "));
+//        assertEquals(true, job.toString().contains("Location: "));
+//        assertEquals(true, job.toString().contains("Position Type: "));
+//        assertEquals(true, job.toString().contains("Core Competency: "));
+//        assertEquals(true, job.toString().contains("" + job.getId()));
+//        assertEquals(true, job.toString().contains(job.getName()));
+//        assertEquals(true, job.toString().contains("Data not available"));
+//        assertEquals(true, job.toString().contains("Data not available"));
+//        assertEquals(true, job.toString().contains(job.getPositionType().getValue()));
+//        assertEquals(true, job.toString().contains(job.getCoreCompetency().getValue()));
 
+        String output=System.lineSeparator()+"ID: "+job.getId()+System.lineSeparator()+"Name: "+job.getName()+System.lineSeparator()+"Employer: "+"Data not available"+System.lineSeparator()+
+                "Location: "+"Data not available"+System.lineSeparator()+"Position Type: "+job.getPositionType()+System.lineSeparator()+"Core Competency: "
+                +job.getCoreCompetency()+System.lineSeparator();
+        assertEquals(output,job.toString());
     }
 }
